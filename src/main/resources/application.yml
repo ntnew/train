@@ -1,0 +1,28 @@
+server:
+  port: 8081
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: 22a7100de41c7308d346
+            client-secret: 05910ab890be29579e9c183443d92e756c450aaf
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: root
+    driverClassName: org.postgresql.Driver
+
+
+flyway:
+  url: jdbc:mysql://localhost:5432/postgres
+  schemas: public
+  user: "postgres"
+  password: "root"

@@ -1,5 +1,6 @@
 package ru.bck.train.model;
 
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import lombok.Data;
 
@@ -11,11 +12,13 @@ public class Client {
 
   @Id
   private UUID id;
-  private String login;
-  private String password;
+  @OneToOne
+  @JoinColumn(name = "id")
+  private User user;
   private String name;
-  private String Surname;
+  private String surname;
 
   @OneToOne
-  private UUID trainerId;
+  @JoinColumn(name = "id")
+  private Trainer trainer;
 }
