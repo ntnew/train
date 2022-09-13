@@ -19,10 +19,8 @@ spring:
     username: postgres
     password: root
     driverClassName: org.postgresql.Driver
-
-
-flyway:
-  url: jdbc:mysql://localhost:5432/postgres
-  schemas: public
-  user: "postgres"
-  password: "root"
+  flyway:
+    schemas: train
+    user: postgres
+    password: root
+    url: jdbc:postgresql://localhost:5432/postgres

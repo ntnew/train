@@ -1,9 +1,6 @@
+COMMENT ON SCHEMA train IS 'БД приложения тренерОчек';
 
-CREATE SCHEMA  AUTHORIZATION postgres;
-
-COMMENT ON SCHEMA public IS 'standard public schema';
-
-CREATE TABLE public."user" (
+CREATE TABLE train."user" (
                                id uuid NOT NULL,
                                login varchar NOT NULL,
                                "password" varchar NOT NULL,
@@ -13,17 +10,17 @@ CREATE TABLE public."user" (
 );
 
 
-CREATE TABLE public.trainer (
+CREATE TABLE train.trainer (
                                 id uuid NOT NULL,
                                 user_id uuid NOT NULL,
                                 "name" varchar NULL,
                                 surname varchar NULL,
-                                CONSTRAINT trainer_fk FOREIGN KEY (user_id) REFERENCES public."user"(id),
+                                CONSTRAINT trainer_fk FOREIGN KEY (user_id) REFERENCES train."user"(id),
                                 CONSTRAINT trainer_pk PRIMARY KEY (id),
                                 CONSTRAINT trainer_un UNIQUE (id)
 );
 
-CREATE TABLE public.client (
+CREATE TABLE train.client (
                                id uuid NOT NULL,
                                user_id uuid NOT NULL,
                                "name" varchar NULL,
@@ -31,6 +28,6 @@ CREATE TABLE public.client (
                                trainer_id uuid NULL,
                                CONSTRAINT client_pk PRIMARY KEY (id),
                                CONSTRAINT client_un UNIQUE (id),
-                               CONSTRAINT client_fk FOREIGN KEY (user_id) REFERENCES public."user"(id),
-                               CONSTRAINT client_fk_to_trainer FOREIGN KEY (trainer_id) REFERENCES public.trainer(id)
+                               CONSTRAINT client_fk FOREIGN KEY (user_id) REFERENCES train."user"(id),
+                               CONSTRAINT client_fk_to_trainer FOREIGN KEY (trainer_id) REFERENCES train.trainer(id)
 );
